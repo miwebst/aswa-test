@@ -31,16 +31,15 @@ jobs:
         ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
     - name: install dependencies & build site
       uses: limjh16/jekyll-action-ts@v2           
-    - name: Build And Deploy
-      id: builddeploy
+    - name: Deploy
+      id: deploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
       with:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_GRAY_BUSH_09725A10F }}
         repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
         action: 'upload'
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
-        app_location: '/_site' # App source code path
-        api_location: 'api' # Api source code path - optional
+        app_location: '/' # App source code path
         app_artifact_location: '/_site' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
