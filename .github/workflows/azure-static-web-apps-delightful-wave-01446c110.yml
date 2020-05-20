@@ -18,10 +18,19 @@ jobs:
       - uses: actions/checkout@v2
         with:
            submodules: true
-      - name: Setup jekyll
-        uses: helaili/jekyll-action@2.0.1
-        env:
-          JEKYLL_PAT: toto
+      - name: 📝 cache bundler files
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: 💎 setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
+      - name: 🔨 install dependencies & build site
+        uses: limjh16/jekyll-action-ts@v2           
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
