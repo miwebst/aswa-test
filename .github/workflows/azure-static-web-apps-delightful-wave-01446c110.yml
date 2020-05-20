@@ -20,8 +20,8 @@ jobs:
            submodules: true
       - name: Setup jekyll
         uses: helaili/jekyll-action@2.0.1
-           env:
-             JEKYLL_PAT: toto
+        env:
+          JEKYLL_PAT: toto
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v0.0.1-preview
