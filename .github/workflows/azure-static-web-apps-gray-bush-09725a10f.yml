@@ -16,7 +16,7 @@ jobs:
     name: Build and Deploy Job
     steps:
     - name: save-path
-      run: echo ::set-env name=oldpath::$path
+      run: echo ::set-env name=OLDPATH::$PATH
     - name: checkout
       uses: actions/checkout@v1
     - name: cache bundler files
@@ -33,7 +33,7 @@ jobs:
     - name: install dependencies & build site
       uses: limjh16/jekyll-action-ts@v2           
     - name: restore-path
-      run: echo ::set-env name=path::$oldpath
+      run: echo ::set-env name=PATH::$OLDPATH
     - name: Deploy
       id: deploy
       uses: Azure/static-web-apps-deploy@v0.0.1-preview
