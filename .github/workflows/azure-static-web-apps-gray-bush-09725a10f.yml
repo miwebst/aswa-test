@@ -15,9 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-    - uses: actions/checkout@v2
-      with:
-          submodules: true
+    - name: checkout
+      uses: actions/checkout@v1
     - name: cache bundler files
       uses: actions/cache@v1
       with:
@@ -25,7 +24,7 @@ jobs:
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
-    - name: 💎 setup ruby
+    - name: setup ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
