@@ -31,7 +31,6 @@ jobs:
         ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
     - name: 🔨 install dependencies & build site
       uses: limjh16/jekyll-action-ts@v2
-    - uses: actions/checkout@v1
     - name: Build And Deploy
       id: builddeploy
       uses: Azure/static-web-apps-deploy@latest
